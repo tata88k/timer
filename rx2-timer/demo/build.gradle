@@ -1,0 +1,18 @@
+apply from: "../gradle/app_module.gradle"
+
+android {
+
+    defaultConfig {
+        applicationId "com.pacific.demo"
+        minSdkVersion 15
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(':rx2timer')
+}

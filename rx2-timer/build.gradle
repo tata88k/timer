@@ -1,0 +1,44 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.4.0-alpha6'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.4.14"
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    compile = 25
+    buildTools = "26.0.0-rc1"
+    support = "25.3.1"
+    min = "9"
+    target = "25"
+    versionCode = 8
+    versionName = "2.0.0"
+    dataBinding = "1.3.1"
+    constraint = "1.0.2"
+    okhttp3 = "3.6.0"
+    okio = "1.12.0"
+    retrofit2 = "2.2.0"
+    gson = "2.8.0"
+    rxjava = "2.0.8"
+    rxandroid = "2.0.1"
+    autoValue = "1.4"
+    javaxAnnotation = "1.3"
+    dagger2 = "2.10"
+    findBugs = "3.0.1"
+}
