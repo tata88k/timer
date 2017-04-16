@@ -1,6 +1,8 @@
-This is a simple rxjava2 timer implemented.I copy this class into all the little apps I make. I'm tired of doing it. Now it's a library.
+![](https://github.com/thepacific/rx2-timer/blob/master/rx2-timer/preview.png)
 
-![](https://github.com/thepacific/rx2-timer/blob/master/rx2-timer/rx2timer.gif)
+This is a simple rxjava2 timer implemented.[ ![Download](https://api.bintray.com/packages/thepacific/maven/rx2timer/images/download.svg) ](https://bintray.com/thepacific/maven/rx2timer/_latestVersion)
+
+I copy this class into all the little apps I make. I'm tired of doing it. Now it's a library.
 
 Usage
 -----
