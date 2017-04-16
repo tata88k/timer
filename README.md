@@ -1,7 +1,6 @@
-This is a simple timer implemented by rxjava2.
+This is a simple rxjava2 timer implemented.I copy this class into all the little apps I make. I'm tired of doing it. Now it's a library.
 
-I copy this class into all the little apps I make. I'm tired of doing it. Now it's a library.
-
+![](https://github.com/thepacific/rx2-timer/blob/master/rx2-timer/rx2timer.gif)
 
 Usage
 -----
@@ -31,7 +30,7 @@ timer.resume();
                 
 ```
 
-Download
+Gradle
 --------
 
 ```groovy
