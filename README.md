@@ -1,4 +1,4 @@
-![](https://github.com/thepacific/rx2-timer/blob/master/rx2-timer/preview.png)
+![](https://github.com/thepacific/rx2-timer/blob/master/rx2-timer/demo.png)
 
 This is a simple rxjava2 timer implemented.[ ![Download](https://api.bintray.com/packages/thepacific/maven/rx2timer/images/download.svg) ](https://bintray.com/thepacific/maven/rx2timer/_latestVersion)
 
