@@ -1,6 +1,6 @@
 ![](https://github.com/thepacific/rx2-timer/blob/master/rx2-timer/demo.png)
 
-This is a simple rxjava2 timer implemented.[ ![Download](https://api.bintray.com/packages/thepacific/maven/rx2timer/images/download.svg) ](https://bintray.com/thepacific/maven/rx2timer/_latestVersion)
+This is a simple rxjava2 timer.[ ![Download](https://api.bintray.com/packages/thepacific/maven/rx2timer/images/download.svg) ](https://bintray.com/thepacific/maven/rx2timer/_latestVersion)
 
 I copy this class into all the little apps I make. I'm tired of doing it. Now it's a library.
 
@@ -38,9 +38,6 @@ Gradle
 ```groovy
 compile 'com.github.thepacific:rx2timer:0.0.1'
 ```
-
-Snapshots of the development version are available in [Sonatype's `snapshots` repository][snap].
-
 
 License
 -------
