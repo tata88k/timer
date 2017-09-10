@@ -1,8 +1,8 @@
 ![](https://github.com/thepacific/rx2-timer/blob/master/rx2-timer/demo.png)
 
-This is a simple rxjava2 timer.[ ![Download](https://api.bintray.com/packages/thepacific/maven/rx2timer/images/download.svg) ](https://bintray.com/thepacific/maven/rx2timer/_latestVersion)
+This is a simple rxjava2 timer. I copy this class into all the little apps I make. I'm tired of doing it. Now it's a library
 
-I copy this class into all the little apps I make. I'm tired of doing it. Now it's a library.
+[ ![Download](https://api.bintray.com/packages/thepacific/maven/rx2timer/images/download.svg) ](https://bintray.com/thepacific/maven/rx2timer/_latestVersion)
 
 Usage
 -----
