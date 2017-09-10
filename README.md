@@ -36,7 +36,7 @@ Gradle
 --------
 
 ```groovy
-compile 'com.github.thepacific:rx2timer:0.0.1'
+compile 'com.github.thepacific:rx2timer:0.0.2'
 ```
 
 License
