@@ -72,25 +72,4 @@ dependencies {
     compile "com.android.support:cardview-v7:$rootProject.ext.support"
     compile "com.android.support:percent:$rootProject.ext.support"
     compile "com.android.support:recyclerview-v7:$rootProject.ext.support"
-    compile "com.android.support.constraint:constraint-layout:$rootProject.ext.constraint"
-    compile "com.google.code.findbugs:jsr305:$rootProject.ext.findBugs"
-
-    compile "com.squareup.okhttp3:okhttp:$rootProject.ext.okhttp3"
-    compile "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.okhttp3"
-    compile "com.squareup.okio:okio:$rootProject.ext.okio"
-    compile "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofit2"
-    compile "com.squareup.retrofit2:adapter-rxjava2:$rootProject.ext.retrofit2"
-    compile "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofit2"
-
-    compile "com.google.code.gson:gson:$rootProject.ext.gson"
-    compile "io.reactivex.rxjava2:rxjava:$rootProject.ext.rxjava"
-    compile "io.reactivex.rxjava2:rxandroid:$rootProject.ext.rxandroid"
-
-    provided "javax.annotation:javax.annotation-api:$rootProject.ext.javaxAnnotation"
-    provided "com.google.auto.value:auto-value:$rootProject.ext.autoValue"
-    annotationProcessor "com.google.auto.value:auto-value:$rootProject.ext.autoValue"
-
-    compile "com.google.dagger:dagger-android-support:$rootProject.ext.dagger2"
-    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.ext.dagger2"
-    annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.ext.dagger2"
 }

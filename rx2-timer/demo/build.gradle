@@ -14,6 +14,6 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.github.thepacific:rx2timer:0.0.1'
-//    compile project(':rx2timer')
+//    compile 'com.github.thepacific:rx2timer:0.0.1'
+    compile project(':rx2timer')
 }
