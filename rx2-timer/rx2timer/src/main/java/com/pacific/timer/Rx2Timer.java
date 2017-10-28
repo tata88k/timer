@@ -11,18 +11,19 @@ import java.util.concurrent.TimeUnit;
 
 public final class Rx2Timer {
 
-  private Disposable disposable;
-  private long take;
-  private long period;
-  private long initialDelay;
-  private TimeUnit unit;
-  private Action onComplete;
-  private Consumer<Long> onEmit;
-  private Consumer<Throwable> onError;
+  private final long take;
+  private final long period;
+  private final long initialDelay;
+  private final TimeUnit unit;
+  private final Action onComplete;
+  private final Consumer<Long> onEmit;
+  private final Consumer<Throwable> onError;
+
   private long pauseTake = 0l;
   private long resumeTake = 0l;
   private boolean isPause = false;
   private boolean isStarted = false;
+  private Disposable disposable;
 
   private Rx2Timer(Builder builder) {
     take = builder.take;
