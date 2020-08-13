@@ -1,4 +1,4 @@
-![](https://github.com/thepacific/timer/tree/master/previews/preview01.png)
+![](https://github.com/thepacific/timer/blob/master/previews/preview01.png)
 
 This is a simple rxjava2/rxjava3/kotlin-flow timer. I copy this class into all the little apps I make. I'm tired of doing it. Now it's a library
 
