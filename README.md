@@ -36,7 +36,10 @@ Gradle
 --------
 
 ```groovy
-implementation 'com.github.thepacific:rx2timer:0.0.3'
+// rxjava2
+implementation 'com.github.thepacific:rx2-timer:1.0.0'
+// rxjava3
+implementation 'com.github.thepacific:rx3-timer:1.0.0'
 ```
 
 License
