@@ -1,6 +1,6 @@
-![](https://github.com/thepacific/rx2-timer/blob/master/rx2-timer/demo.png)
+![](https://github.com/thepacific/timer/tree/master/previews/preview01.png)
 
-This is a simple rxjava2 timer. I copy this class into all the little apps I make. I'm tired of doing it. Now it's a library
+This is a simple rxjava2/rxjava3/kotlin-flow timer. I copy this class into all the little apps I make. I'm tired of doing it. Now it's a library
 
 [ ![Download](https://api.bintray.com/packages/thepacific/maven/rx2timer/images/download.svg) ](https://bintray.com/thepacific/maven/rx2timer/_latestVersion)
 
@@ -36,7 +36,7 @@ Gradle
 --------
 
 ```groovy
-compile 'com.github.thepacific:rx2timer:0.0.3'
+implementation 'com.github.thepacific:rx2timer:0.0.3'
 ```
 
 License
