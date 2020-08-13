@@ -1,0 +1,216 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    apply from: file('gradle/dependencies.gradle')
+    ext {
+        kotlin_version = '1.3.72'
+    }
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+        maven { url "https://kotlin.bintray.com/kotlinx" }
+        maven { url "https://dl.bintray.com/kotlin/kotlin-eap" }
+        maven { url "https://jitpack.io" }
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.0.1'
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:${versions.androidX.navigation}"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
+        classpath "org.jetbrains.kotlin:kotlin-serialization:${versions.kotlin}"
+        classpath "org.jlleitschuh.gradle:ktlint-gradle:${versions.ktlint}"
+        classpath "com.vanniktech:gradle-maven-publish-plugin:${versions.mavenPublish}"
+    }
+}
+
+allprojects { project ->
+    apply plugin: 'org.jlleitschuh.gradle.ktlint'
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+        maven { url "https://kotlin.bintray.com/kotlinx" }
+        maven { url "https://dl.bintray.com/kotlin/kotlin-eap" }
+        maven { url "https://jitpack.io" }
+        mavenLocal()
+    }
+
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+
+    plugins.withType(com.android.build.gradle.BasePlugin).configureEach { plugin ->
+        plugin.extension.compileOptions {
+            coreLibraryDesugaringEnabled true
+            sourceCompatibility = JavaVersion.VERSION_1_8
+            targetCompatibility = JavaVersion.VERSION_1_8
+        }
+    }
+
+    tasks.withType(JavaCompile).configureEach { task ->
+        task.sourceCompatibility = JavaVersion.VERSION_1_8
+        task.targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach { task ->
+        task.kotlinOptions {
+            jvmTarget = "1.8"
+            suppressWarnings = true
+        }
+    }
+
+    if (project.plugins.hasPlugin('kotlin-android-extensions')) {
+        androidExtensions {
+            experimental = true
+        }
+    }
+
+    if (project.plugins.hasPlugin('kotlin-kapt')) {
+        kapt {
+            correctErrorTypes = true
+            useBuildCache = true
+
+            javacOptions {
+                option("-Xmaxerrs", 1000)
+            }
+        }
+    }
+
+    configurations.all {
+        resolutionStrategy {
+            eachDependency { details ->
+                def group = details.requested.group
+                def name = details.requested.name
+
+                if (group == 'org.jetbrains.kotlin' && name.startsWith('kotlin-stdlib')) {
+                    details.useVersion versions.kotlin
+                } else if (group == 'org.jetbrains' && name.startsWith('annotations')) {
+                    details.useVersion versions.jetAnnotation
+                } else if (group == 'com.google.code.findbugs' && name.startsWith('jsr305')) {
+                    details.useVersion versions.findBugsJrs305
+                } else if (group == 'org.reactivestreams' && name.startsWith('reactive-streams')) {
+                    details.useVersion versions.rxStream
+                } else if (group == 'com.google.errorprone' && name.startsWith('error_prone_annotations')) {
+                    details.useVersion versions.errorProne
+                } else if (group == 'com.google.auto.value') {
+                    details.useVersion versions.autoValue
+                } else if (group == 'androidx.fragment') {
+                    details.useVersion versions.androidX.fragment
+                } else if (group == 'com.google.android.material') {
+                    details.useVersion versions.androidX.material
+                } else if (group == 'androidx.core' && name == 'core') {
+                    details.useVersion versions.androidX.core
+                } else if (group == 'androidx.collection' && name == 'collection') {
+                    details.useVersion versions.androidX.collection
+                } else if (group == 'androidx.customview') {
+                    details.useVersion versions.androidX.customview
+                } else if (group == 'androidx.arch.core') {
+                    details.useVersion versions.androidX.arch
+                }
+            }
+        }
+    }
+}
+
+subprojects { project ->
+    afterEvaluate {
+        if (project.plugins.hasPlugin('android') || project.plugins.hasPlugin('android-library')) {
+
+            boolean isAndroidLibrary = project.plugins.hasPlugin('android-library')
+            boolean isRelease = project.gradle.startParameter.taskNames.any {
+                it.toLowerCase().contains('release')
+            }
+
+            android {
+                compileSdkVersion buildConfig.compileSdk
+                buildToolsVersion buildConfig.buildTools
+
+                defaultConfig {
+                    minSdkVersion buildConfig.minSdk
+                    targetSdkVersion buildConfig.targetSdk
+                    versionCode buildConfig.version.code
+                    versionName buildConfig.version.name
+
+                    multiDexEnabled true
+                    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+                }
+
+                buildFeatures {
+                    viewBinding = true
+                    dataBinding = true
+                }
+
+                buildTypes {
+                    release {
+                        minifyEnabled(isRelease && !isAndroidLibrary)
+                        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+                    }
+                }
+
+                splits {
+                    abi {
+                        enable true
+                        reset()
+                        include "armeabi-v7a", "x86"
+                        universalApk true
+                    }
+                }
+
+                lintOptions {
+                    textReport true
+                    textOutput 'stdout'
+                    lintConfig rootProject.file('lint.xml')
+                    warning 'UnusedResources'
+                    checkAllWarnings true
+                    warningsAsErrors true
+                    checkReleaseBuilds true
+                    abortOnError false
+                }
+
+                packagingOptions {
+                    exclude 'META-INF/README'
+                    exclude 'META-INF/README.txt'
+                    exclude 'META-INF/readme'
+                    exclude 'META-INF/readme.txt'
+
+                    exclude 'META-INF/LICENSE'
+                    exclude 'META-INF/LICENSE.txt'
+                    exclude 'META-INF/license'
+                    exclude 'META-INF/license.txt'
+
+                    exclude 'META-INF/NOTICE'
+                    exclude 'META-INF/NOTICE.txt'
+                    exclude 'META-INF/notice'
+                    exclude 'META-INF/notice.txt'
+
+                    exclude 'META-INF/*.properties.txt'
+                    exclude 'META-INF/*.DEPENDENCIES.txt'
+                    exclude 'META-INF/dependencies'
+                    exclude 'META-INF/dependencies.txt'
+                    exclude 'META-INF/DEPENDENCIES'
+                    exclude 'META-INF/DEPENDENCIES.txt'
+
+                    exclude 'META-INF/LGPL2.1'
+                    exclude 'META-INF/ASL2.0'
+
+                    exclude 'META-INF/proguard/**'
+                    exclude 'META-INF/*.version'
+
+                    exclude 'version.txt'
+                    exclude 'androidsupportmultidexversion.txt'
+                }
+            }
+        } else {
+            println("JVM project")
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

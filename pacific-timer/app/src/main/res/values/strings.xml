@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">timer</string>
+    <string name="count">00 s</string>
+</resources>

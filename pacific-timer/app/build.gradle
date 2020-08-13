@@ -1,0 +1,20 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlinx-serialization'
+
+apply from: "../gradle/android_module.gradle"
+
+android {
+    defaultConfig {
+        applicationId "com.pacific.app.timber"
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])    
+    implementation project(':rx2-timer')
+    implementation project(':rx3-timer')
+}
+
