@@ -2,7 +2,7 @@
 
 This is a simple rxjava2/rxjava3/kotlin-flow timer. I copy this class into all the little apps I make. I'm tired of doing it. Now it's a library
 
-[ ![Download](https://api.bintray.com/packages/thepacific/maven/rx2timer/images/download.svg) ](https://bintray.com/thepacific/maven/rx2timer/_latestVersion)
+[![Download](https://img.shields.io/maven-central/v/com.github.thepacific/rx2-timer.svg)](https://search.maven.org/artifact/com.github.thepacific/rx2-timer)
 
 Usage
 -----
